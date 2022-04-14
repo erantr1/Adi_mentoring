@@ -1,9 +1,9 @@
 from dicttoxml import dicttoxml
 from xml.dom.minidom import parseString
 
-categories = {"Alphabetic": ["abcba", "defgddy", "hijkl"], "Numeric": ["11223", "24124", "76809"], "Alphanumeric": ["121ab1", "556cd6", "09aa05bb"]}
+categories_dict = {"Animals": ["dog", "cat", "chicken"], "furniture": ["closet", "chair", "table"], "food": ["pizza", "falafel", "chocolate"]}
 
-categories_xml = dicttoxml(categories, attr_type = False)
+categories_xml = dicttoxml(categories_dict, attr_type = False)
 categories_dom = parseString(categories_xml)
 
 print(categories_xml)

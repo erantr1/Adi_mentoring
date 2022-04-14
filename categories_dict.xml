@@ -1,18 +1,18 @@
 <?xml version="1.0" ?>
 <root>
-    <Alphabetic>
-        <item>abcba</item>
-        <item>defgddy</item>
-        <item>hijkl</item>
-    </Alphabetic>
-    <Numeric>
-        <item>11223</item>
-        <item>24124</item>
-        <item>76809</item>
-    </Numeric>
-    <Alphanumeric>
-        <item>121ab1</item>
-        <item>556cd6</item>
-        <item>09aa05bb</item>
-    </Alphanumeric>
+    <Animals>
+        <item>dog</item>
+        <item>cat</item>
+        <item>chicken</item>
+    </Animals>
+    <furniture>
+        <item>closet</item>
+        <item>chair</item>
+        <item>table</item>
+    </furniture>
+    <food>
+        <item>pizza</item>
+        <item>falafel</item>
+        <item>chocolate</item>
+    </food>
 </root>
