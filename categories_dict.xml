@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<root>
+    <Alphabetic>
+        <item>abcba</item>
+        <item>defgddy</item>
+        <item>hijkl</item>
+    </Alphabetic>
+    <Numeric>
+        <item>11223</item>
+        <item>24124</item>
+        <item>76809</item>
+    </Numeric>
+    <Alphanumeric>
+        <item>121ab1</item>
+        <item>556cd6</item>
+        <item>09aa05bb</item>
+    </Alphanumeric>
+</root>
