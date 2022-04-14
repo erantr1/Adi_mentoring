@@ -6,8 +6,6 @@ categories_dict = {"Animals": ["dog", "cat", "chicken"], "furniture": ["closet",
 categories_xml = dicttoxml(categories_dict, attr_type = False)
 categories_dom = parseString(categories_xml)
 
-print(categories_xml)
-print()
 print(categories_dom.toprettyxml())
 
 xmlfile = open("categories_dict.xml", "w")
