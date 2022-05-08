@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<data>
+	<category name = "Animals">
+		<animal name = "dog"/>
+		<animal name = "cat"/>
+		<animal name = "chicken"/>
+	</category>
+	<category name = "Furnitures">
+		<furniture name = "closet"/>
+		<furniture name = "chair"/>
+		<furniture name = "table"/>
+	</category>
+	<category name = "Food">
+		<food name = "pizza"/>
+		<food name = "falafel"/>
+		<food name = "chocolate"/>
+	</category>
+</data>

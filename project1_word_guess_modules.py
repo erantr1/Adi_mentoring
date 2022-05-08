@@ -1,7 +1,6 @@
 import random
-# import xmltodict
-# from lxml import etree
-# from pprint import pprint
+import math
+import xml.etree.ElementTree as ET
 
 def category_selection(categories_dict):
   for category in categories_dict:
@@ -29,31 +28,36 @@ def intro(categories_dict):
 
   return word_to_guess
 
+def guess_next_letter(remaining_guesses, num_of_guessed_letters, num_of_guesses):
+  print(f"\nThe number of remaining guesses is {remaining_guesses}")
+  print(f"The number of guessed letters is: {num_of_guessed_letters}")
+  print(f"\nPlease enter your {'first' if remaining_guesses == num_of_guesses else 'next'} guess")
+  guessed_letter = input()
+  return guessed_letter
+
+
 def guess_cycle(num_of_guesses, word_to_guess, word_length):
     remaining_guesses = num_of_guesses
     num_of_guessed_letters = 0
     word_in_progress = ["_" for i in range(word_length)]    
     already_guessed_letters = []
     while remaining_guesses > 0 and num_of_guessed_letters < word_length:
-      print(f"\nThe number of remaining guesses is {remaining_guesses}")
-      print(f"The number of guessed letters is: {num_of_guessed_letters}")
-      print(f"\nPlease enter your {'first' if remaining_guesses == num_of_guesses else 'next'} guess")
-      guessed_letter = input()
+      guessed_letter = guess_next_letter(remaining_guesses, num_of_guessed_letters, num_of_guesses)
       if guessed_letter in already_guessed_letters:
         print("This letter was already guessed, please select another letter")
         continue
       already_guessed_letters.append(guessed_letter)
       print(already_guessed_letters)
 
-      indices_to_display = [i for i, ltr in enumerate(word_to_guess) if ltr.casefold() == guessed_letter.casefold()]
-      if indices_to_display:
-        num_of_guessed_letters += len(indices_to_display)
+      indices_to_uncover = [i for i, ltr in enumerate(word_to_guess) if ltr.casefold() == guessed_letter.casefold()]
+      if indices_to_uncover:
+        num_of_guessed_letters += len(indices_to_uncover)
       remaining_guesses -= 1
 
-      for index in indices_to_display:
+      for index in indices_to_uncover:
         word_in_progress[index] = guessed_letter
       word_in_progress_string = ''.join(word_in_progress)
-      print(f"You now have {word_in_progress_string}")
+      print(f"Current guess: {word_in_progress_string}")
 
     return remaining_guesses, num_of_guessed_letters
 
@@ -62,7 +66,9 @@ def main():
   
   # with open('categories_dict.xml', 'r', encoding = 'utf-8') as f:
   #   categories_xml = f.read()
-  #categories_dict = xmltodict.parse(categories_xml)
+
+  tree = ET.parse('categories_xml.xml')
+  root = tree.getroot()
 
   categories_dict = {"Animals": ["dog", "cat", "chicken"], "furniture": ["closet", "chair", "table"], "food": ["pizza", "falafel", "chocolate"]} # need to change to a function that loads from xml
   
@@ -70,7 +76,7 @@ def main():
     # getting initial parameters
     word_to_guess = intro(categories_dict)
     word_length = len(word_to_guess)
-    num_of_guesses = word_length + 2
+    num_of_guesses = math.ceil(word_length*1.5)
 
     print("\nNow you need to guess the right word, letter by letter")
     print(f"The number of letters in the word is {word_length} and the number of guesses you have is {num_of_guesses}")
